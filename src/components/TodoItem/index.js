@@ -1,26 +1,31 @@
 import React from 'react';
+import { TodoContext } from '../TodoContext';
 import "./TodoItem.css";
 
-function TodoItem (props) {
-   
+function TodoItem ({ text, completed }) {
+    const {
+        onFinish,
+        onDelete,
+      } = React.useContext(TodoContext);
+
     return (
         <li className="TodoItem">
             <span 
-                className={`Icon Icon-check  ${props.completed && 'Icon-check--active'}`}
-                onClick={props.onFinish}
+                className={`Icon Icon-check  ${completed && 'Icon-check--active'}`}
+                onClick={onFinish}
             >
                 √
             </span>
             
             <p 
-                className={`TodoItem-p ${props.completed &&'TodoItem-p--complete'}`}
+                className={`TodoItem-p ${completed &&'TodoItem-p--complete'}`}
             >
-                {props.text}
+                {text}
             </p>
 
             <span 
                 className="Icon Icon-delete"
-                onClick={props.onDelete}
+                onClick={onDelete}
             >
                 X 
             </span>
