@@ -1,6 +1,7 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
 import "./TodoItem.css";
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function TodoItem ({ text, completed, onFinish, onDelete }) {
     
@@ -11,7 +12,7 @@ function TodoItem ({ text, completed, onFinish, onDelete }) {
                 className={`Icon Icon-check  ${!!completed && 'Icon-check--active'}`}
                 onClick={onFinish}
             >
-                √
+                <CheckBoxIcon />
             </span>
             
             <p 
@@ -24,7 +25,7 @@ function TodoItem ({ text, completed, onFinish, onDelete }) {
                 className="Icon Icon-delete"
                 onClick={onDelete}
             >
-                X 
+                <DeleteIcon /> 
             </span>
         </li>
     )
