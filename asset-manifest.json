@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/riojape/react-introduction-TODO/static/css/main.39de812b.css",
+    "main.js": "/riojape/react-introduction-TODO/static/js/main.d4624693.js",
+    "index.html": "/riojape/react-introduction-TODO/index.html",
+    "main.39de812b.css.map": "/riojape/react-introduction-TODO/static/css/main.39de812b.css.map",
+    "main.d4624693.js.map": "/riojape/react-introduction-TODO/static/js/main.d4624693.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39de812b.css",
+    "static/js/main.d4624693.js"
+  ]
+}
