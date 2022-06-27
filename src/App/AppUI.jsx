@@ -16,6 +16,8 @@ function AppUI() {
     searchedTodos,
     finishTodo,
     deleteTodo,
+    openModal,
+    setOpenModal,
   } = React.useContext(TodoContext);
 
     return (
@@ -36,18 +38,7 @@ function AppUI() {
           />
         ))}
       </TodoList>
-      <Modal>
-        <div className="modal modal-bg">
-          <form action="">
-            <label for="newTodo">Escribe tu nuevo TODO</label>
-            <input type="text" className='modal-input' placeholder="Limpiar departamento" name='newTodo'/>
-            <div className="modal-container-btn">
-              <button type="button" className="btn btn-primary">Añadir</button>
-              <button type="button" className="btn btn-secondary">Cancelar</button>
-            </div>
-          </form>
-        </div>
-      </Modal>
+      {!!openModal && <Modal />}
       <CreateTodoButtom />
     </React.Fragment>
     )
