@@ -27,7 +27,7 @@ const useLocalStorage = (nameItems, initialValue) => {
           setError(error);
         }
       }, 1000);
-    });
+    }, items);
   
     const saveItems = (newItems) => {
       try {
@@ -38,6 +38,7 @@ const useLocalStorage = (nameItems, initialValue) => {
         setError(error);
       }
     };
+    
     return {
       items,
       saveItems,
