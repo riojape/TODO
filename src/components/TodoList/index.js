@@ -18,7 +18,7 @@ function TodoList ({
             {error && onError()}
             {loading && onLoading()}
             {(!loading && !todos.length) && onEmptyTodos()}
-            {(!loading && !searchedTodos.length) && onEmptySearchResults()}
+            {(!searchedTodos.length && !!todos.length) && onEmptySearchResults()}
             {searchedTodos.map(todo => render(todo) || children)} {/*Osea que si no hay uno se renderiza el otro*/}
         </ul>
     )
