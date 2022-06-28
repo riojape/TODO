@@ -59,7 +59,7 @@ const useTodos = () => {
         };
         setAddTodo(newTodo);
     };
-    // console.log (todos);
+    // console.log (!todos.length);
     const addButton = () => {
         setTodos([...todos, addTodo]);
         setOpenModal(false);

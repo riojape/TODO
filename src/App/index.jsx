@@ -11,6 +11,7 @@ import { CreateTodoButtom } from '../components/CreateTodoButtom';
 import { Modal } from '../components/Modal';
 import { TodoItem } from '../components/TodoList/TodoItem';
 import { Header } from '../components/Header/Header';
+import { EmptySearchResults } from '../components/TodoList/EmptySearchResults';
 
 // const defaultTodos = [
 //   {text: 'Cortar Cebolla', completed: false},
@@ -50,20 +51,25 @@ function App() {
             setSearchValue = {setSearchValue}
           />
         </Header>
-        <TodoList>
-          {error && <TodosError />}
-          {loading && <TodosLoading />}
-          {(!loading && !searchedTodos.length) && <EmptyTodos />}
-          {searchedTodos.map((todo) =>(
+        <TodoList
+          todos= {todos}
+          error = {error} 
+          loading = {loading}
+          searchedTodos = {searchedTodos}
+          onError = {() => <TodosError />}
+          onLoading = {() => <TodosLoading />}
+          onEmptyTodos = {() => <EmptyTodos />}
+          onEmptySearchResults = {() => <EmptySearchResults searchValue = {searchValue} />}
+          render = {(todo) => 
             <TodoItem 
-              key={todo.text} 
-              text={todo.text} 
-              completed = {todo.completed}
-              onFinish={() => {finishTodo(todo.text)}}
-              onDelete={() => {deleteTodo(todo.text)}}
+                key={todo.text} 
+                text={todo.text} 
+                completed = {todo.completed}
+                onFinish={() => {finishTodo(todo.text)}}
+                onDelete={() => {deleteTodo(todo.text)}}
             />
-          ))}
-        </TodoList>
+          }
+        />
         {!!openModal && 
           <Modal 
           addInputModal = {addInputModal}

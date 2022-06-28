@@ -9,7 +9,7 @@ function CreateTodoButtom ({openModal, setOpenModal}){
         } else {
             setOpenModal(true);
         }
-        console.log(openModal);
+        // console.log(openModal);
     };
 
     return (
