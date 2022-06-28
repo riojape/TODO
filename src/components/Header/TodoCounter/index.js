@@ -1,12 +1,8 @@
 import React from 'react';
 import "./TodoCounter.css";
-import {TodoContext} from "../TodoContext/index";
+// import {TodoContext} from "../../../App/useTodos";
 
-function TodoCounter (){
-    const {
-        todos,
-        completedTodos,
-    } = React.useContext(TodoContext);
+function TodoCounter ({todos, completedTodos}){
 
     return (
         <h2 className="TodoCounter">Has completado {completedTodos} de {todos.length} TODOS</h2>

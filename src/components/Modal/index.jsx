@@ -1,70 +1,42 @@
-import { useContext, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { TodoContext } from '../TodoContext';
 import './Modal.css';
 
-function Modal() {
-  const {
-    todos,
-    setTodos,
-    setOpenModal,
-  } = useContext(TodoContext);
+function Modal({addInputModal, addButton, closeModal }) {
 
-  const [addTodo, setAddTodo] = useState({});
+  return ReactDOM.createPortal(
+    <div className="modal modal-bg">
+      <form  className="modal-form">
+        <label for="newTodo" className='form-control-label'>Escribe tu nuevo TODO</label> 
+        <input 
+          onChange={addInputModal} 
+          type="text" 
+          className='form-control-input' 
+          placeholder="Limpiar departamento" 
+          id='newTodo'/>       
+        <div className="form-container-btn">
+          <button 
+            className="btn btn-primary"
+            type="button" 
+            variant="container"
+            onClick={addButton}
+          >
+            Añadir
+          </button>
 
-  const addInputModal = (e) => {
-    // console.log(typeof(e.target.value));
-    let value = e.target.value;
-    let newTodo = {
-      text:       value,
-      completed:  false,
-    };
-    setAddTodo(newTodo);
-  };
-  console.log (addTodo);
+          <button 
+            type="button" 
+            className="btn btn-secondary"
+            onClick={closeModal}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>,
 
-  const addButton = () => {
-    setTodos([...todos, addTodo]);
-    setOpenModal(false);
-  };
-
-  const closeModal = () => {
-    setOpenModal(false);
-  };
-
-    return ReactDOM.createPortal(
-      <div className="modal modal-bg">
-        <form  className="modal-form">
-          <label for="newTodo" className='form-control-label'>Escribe tu nuevo TODO</label> 
-          <input 
-            onChange={addInputModal} 
-            type="text" 
-            className='form-control-input' 
-            placeholder="Limpiar departamento" 
-            id='newTodo'/>       
-          <div className="form-container-btn">
-            <button 
-              className="btn btn-primary"
-              type="button" 
-              variant="container"
-              onClick={addButton}
-            >
-              Añadir
-            </button>
-
-            <button 
-              type="button" 
-              className="btn btn-secondary"
-              onClick={closeModal}
-            >
-              Cancelar
-            </button>
-          </div>
-        </form>
-      </div>,
-
-        document.getElementById('modal')
-    );
+      document.getElementById('modal')
+  );
 };
 
 export { Modal }; 
