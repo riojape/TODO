@@ -12,6 +12,7 @@ import { Modal } from '../components/Modal';
 import { TodoItem } from '../components/TodoList/TodoItem';
 import { Header } from '../components/Header/Header';
 import { EmptySearchResults } from '../components/TodoList/EmptySearchResults';
+import { StorageAlert } from '../components/StorageAlert';
 
 // const defaultTodos = [
 //   {text: 'Cortar Cebolla', completed: false},
@@ -37,6 +38,8 @@ function App() {
     addInputModal,
     addButton,
     closeModal,
+    updateStorage,
+    buttonStorageAlert,
   } = useTodos();
 
   return (
@@ -78,6 +81,9 @@ function App() {
           addButton = {addButton}
           closeModal = {closeModal}
         />}
+
+        {!!updateStorage && <StorageAlert buttonStorageAlert = {buttonStorageAlert} />}
+        
         <CreateTodoButtom 
           openModal = {openModal}
           setOpenModal = {setOpenModal}

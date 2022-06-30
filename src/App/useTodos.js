@@ -12,7 +12,10 @@ const useTodos = () => {
         items: todos, 
         saveItems: setTodos,
         loading,
-        error
+        setLoading,
+        error,
+        updateStorage,
+        setUpdateStorage,
     } = useLocalStorage('TODOS_V1', []);
 
     /* ---- Funciones de TodoCounter ----*/
@@ -59,7 +62,7 @@ const useTodos = () => {
         };
         setAddTodo(newTodo);
     };
-    // console.log (!todos.length);
+    // console.log (todos.length);
     const addButton = () => {
         setTodos([...todos, addTodo]);
         setOpenModal(false);
@@ -68,6 +71,19 @@ const useTodos = () => {
         setOpenModal(false);
     };
 
+    /* ---- Funciones de StorageAlert ----*/
+    const openStorageAlert = (e) => {
+        if (e.key === 'TODOS_V1') {
+            setUpdateStorage(true);
+        }
+    };
+    window.addEventListener('storage', openStorageAlert)
+
+    const buttonStorageAlert = () => {
+        setUpdateStorage(false);
+        setLoading(true);
+    }
+    
     return (
         {
             loading,
@@ -85,8 +101,8 @@ const useTodos = () => {
             addInputModal,
             addButton,
             closeModal,
-            /*addTodo,
-            setAddTodo,*/
+            updateStorage,
+            buttonStorageAlert,
         }
     )
 }

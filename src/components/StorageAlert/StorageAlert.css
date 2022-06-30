@@ -1,0 +1,28 @@
+.alertStorage-bg {
+    background-color: rgba(32,35,41,.8);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    top: 0px;
+    z-index: 20;
+}
+.alertStorage-card {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.alertStorage-card p, button{
+    margin-top: 40px;
+}
+.alertStorage-card button {
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 50px; 
+}

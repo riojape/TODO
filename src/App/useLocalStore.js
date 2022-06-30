@@ -6,28 +6,32 @@ const useLocalStorage = (nameItems, initialValue) => {
     const [items, setItems] = React.useState(initialValue);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(false);
+    const [updateStorage, setUpdateStorage] = React.useState(false);
   
     React.useEffect(()=> {
       setTimeout(() => {
         try {
-          const localStorageItems = localStorage.getItem(nameItems);
-          let parsedItems;
-      
-          if (!localStorageItems){
-            parsedItems = [];
-            localStorage.setItem(nameItems, JSON.stringify(initialValue));
-          } else {
-            parsedItems = JSON.parse(localStorageItems);
-          };
-  
-          setItems(parsedItems);
-          setLoading(false);
-  
+          if (updateStorage){
+            setLoading(false);
+          }else{
+            const localStorageItems = localStorage.getItem(nameItems);
+            let parsedItems;
+        
+            if (!localStorageItems){
+              parsedItems = [];
+              localStorage.setItem(nameItems, JSON.stringify(initialValue));
+            } else {
+              parsedItems = JSON.parse(localStorageItems);
+            };
+            setItems(parsedItems);
+            setLoading(false);
+          }
+            
         } catch(error){
           setError(error);
         }
-      }, 3000);
-    }, [items]);
+      }, 2000);
+    }, [updateStorage]);
   
     const saveItems = (newItems) => {
       try {
@@ -42,8 +46,11 @@ const useLocalStorage = (nameItems, initialValue) => {
     return {
       items,
       saveItems,
-      loading, 
-      error
+      loading,
+      setLoading,
+      error,
+      updateStorage,
+      setUpdateStorage,
     };
     
   }

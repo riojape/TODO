@@ -19,7 +19,7 @@ function TodoList ({
             {loading && onLoading()}
             {(!loading && !todos.length) && onEmptyTodos()}
             {(!searchedTodos.length && !!todos.length) && onEmptySearchResults()}
-            {searchedTodos.map(todo => render(todo) || children)} {/*Osea que si no hay uno se renderiza el otro*/}
+            {!loading && searchedTodos.map(todo => render(todo) || children)} {/*Osea que si no hay uno se renderiza el otro*/}
         </ul>
     )
 }
